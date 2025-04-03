@@ -1,0 +1,156 @@
+@use 'vars' as v;
+@import url(fonts.css);
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  display: flex;
+  font-family: 'ttlakes';
+}
+
+.button {
+  background-color: #fff;
+  border: none;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+
+  &:active {
+    background-color: v.$button-active;
+  }
+}
+
+.aside {
+  width: 306px;
+  height: 100vh;
+  background-color: #fff;
+  position: fixed;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 31px 0 22px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style: none;
+    padding-left: 0;
+    padding-top: 37px;
+    margin-bottom: 241px;
+  }
+}
+.button-list {
+  background-color: #fff;
+  width: fit-content;
+  border: none;
+  font-family: 'ttlakes';
+  font-weight: 500;
+  display: flex;
+  padding: 0;
+  align-items: center;
+}
+
+.divider {
+  width: 4px;
+  height: 32px;
+  background-color: v.$divider-color;
+  position: absolute;
+  left: 0px;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.divider2 {
+  width: 3px;
+  height: 40px;
+  border-radius: 2px;
+  background-color: v.$divider-color;
+  margin-left: 2px;
+}
+
+.list__item {
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  color: v.$font-color;
+  transition: color 0.3s ease;
+
+  &:hover {
+    button {
+      color: #7e7e82;
+    }
+  }
+  &:focus-within {
+    .divider {
+      opacity: 1;
+    }
+  }
+}
+
+.aside__footer {
+  margin-left: 19px;
+  .contact {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .mail {
+    font-weight: 500;
+    color: v.$font-color;
+    margin-bottom: 12px;
+  }
+  .number {
+    font-weight: 700;
+    color: v.$font-color;
+  }
+}
+
+.language {
+  font-weight: 500;
+  display: flex;
+  margin-top: 40px;
+  gap: 7px;
+
+  &__input {
+    display: none;
+  }
+
+  &__item {
+    color: black;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  &__input:checked + &__item {
+    color: gray;
+  }
+}
+
+.main {
+  width: 1120px;
+  height: 1925px;
+  margin-left: 306px;
+  background-color: lightgreen;
+
+  &__header {
+    width: calc(1120px - 306px);
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 42px;
+  }
+  .left {
+    display: flex;
+    align-items: center;
+  }
+  .text {
+    font-weight: 700;
+    margin-left: 30px;
+  }
+}

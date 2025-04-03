@@ -1,0 +1,145 @@
+@import url(fonts.css);
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  display: flex;
+  font-family: "ttlakes";
+}
+
+.button {
+  background-color: #fff;
+  border: none;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+}
+.button:active {
+  background-color: rgba(0, 255, 213, 0.6392156863);
+}
+
+.aside {
+  width: 306px;
+  height: 100vh;
+  background-color: #fff;
+  position: fixed;
+}
+.aside__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 31px 0 22px;
+}
+.aside__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+  padding-left: 0;
+  padding-top: 37px;
+  margin-bottom: 241px;
+}
+
+.button-list {
+  background-color: #fff;
+  width: fit-content;
+  border: none;
+  font-family: "ttlakes";
+  font-weight: 500;
+  display: flex;
+  padding: 0;
+  align-items: center;
+}
+
+.divider {
+  width: 4px;
+  height: 32px;
+  background-color: #41f6d7;
+  position: absolute;
+  left: 0px;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.divider2 {
+  width: 3px;
+  height: 40px;
+  border-radius: 2px;
+  background-color: #41f6d7;
+  margin-left: 2px;
+}
+
+.list__item {
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  color: #1b1c21;
+  transition: color 0.3s ease;
+}
+.list__item:hover button {
+  color: #7e7e82;
+}
+.list__item:focus-within .divider {
+  opacity: 1;
+}
+
+.aside__footer {
+  margin-left: 19px;
+}
+.aside__footer .contact {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.aside__footer .mail {
+  font-weight: 500;
+  color: #1b1c21;
+  margin-bottom: 12px;
+}
+.aside__footer .number {
+  font-weight: 700;
+  color: #1b1c21;
+}
+
+.language {
+  font-weight: 500;
+  display: flex;
+  margin-top: 40px;
+  gap: 7px;
+}
+.language__input {
+  display: none;
+}
+.language__item {
+  color: black;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.language__input:checked + .language__item {
+  color: gray;
+}
+
+.main {
+  width: 1120px;
+  height: 1925px;
+  margin-left: 306px;
+  background-color: lightgreen;
+}
+.main__header {
+  width: 814px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 42px;
+}
+.main .left {
+  display: flex;
+  align-items: center;
+}
+.main .text {
+  font-weight: 700;
+  margin-left: 30px;
+}
+
+/*# sourceMappingURL=styles.css.map */
