@@ -4,7 +4,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: lightgreen;
+  background-color: #f8f8f8;
   display: flex;
   font-family: 'ttlakes';
 }
@@ -456,6 +456,10 @@ body {
     border-radius: 6px;
     border: 1px solid #eaeaea;
     background-color: #fff;
+
+    &:active {
+      background-color: v.$button-active;
+    }
   }
 }
 
