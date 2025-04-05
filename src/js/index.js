@@ -41,15 +41,42 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 // Swiper (убедись, что подключена библиотека и есть .mySwiper в HTML)
-try {
-  var swiper = new Swiper('.mySwiper', {
-    slidesPerView: 'auto',
-    spaceBetween: 30,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true
-    }
+// try {
+//   var swiper = new Swiper('.mySwiper', {
+//     slidesPerView: 'auto',
+//     spaceBetween: 30,
+//     pagination: {
+//       el: '.swiper-pagination',
+//       clickable: true
+//     }
+//   })
+// } catch (error) {
+//   console.error('Ошибка инициализации Swiper:', error)
+// }
+
+//techs
+
+document.addEventListener('DOMContentLoaded', function () {
+  const button = document.getElementById('hideBtn2')
+  const items = document.querySelectorAll('.techs .slider__item2.eshe')
+  const buttonText = document.getElementById('button__text2')
+  const icon = document.getElementById('icon__less2')
+
+  if (!button || items.length === 0) return
+
+  // Изначально скрываем
+  items.forEach((item) => (item.style.display = 'none'))
+
+  button.addEventListener('click', () => {
+    const allHidden = Array.from(items).every(
+      (item) => item.style.display === 'none'
+    )
+
+    items.forEach((item) => {
+      item.style.display = allHidden ? 'flex' : 'none'
+    })
+
+    buttonText.textContent = allHidden ? 'Скрыть' : 'Показать все'
+    icon.src = allHidden ? 'img/expand-.svg' : 'img/expand+.svg'
   })
-} catch (error) {
-  console.error('Ошибка инициализации Swiper:', error)
-}
+})
