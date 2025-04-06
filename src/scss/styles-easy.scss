@@ -6,7 +6,7 @@ body {
   padding: 0;
   background-color: #f8f8f8;
   display: flex;
-  font-family: 'ttlakes';
+  font-family: v.$font-family;
   flex-direction: column;
 }
 
@@ -49,7 +49,7 @@ body {
   background-color: #fff;
   width: fit-content;
   border: none;
-  font-family: 'ttlakes';
+  font-family: v.$font-family;
   font-weight: 500;
   display: flex;
   padding: 0;
@@ -83,7 +83,7 @@ body {
 
   &:hover {
     button {
-      color: #7e7e82;
+      color: v.$font-color;
     }
   }
   &:focus-within {
@@ -174,7 +174,7 @@ body {
   gap: 8px;
   background-color: #fff;
   border: none;
-  font-family: 'ttlakes';
+  font-family: v.$font-family;
 
   &:active {
     background-color: v.$button-active;
@@ -210,10 +210,10 @@ body {
     width: 246px;
     height: 40px;
     padding: 10px;
-    font-family: 'ttlakes';
+    font-family: v.$font-family;
     font-size: 16px;
     font-weight: 500;
-    color: #7e7e82;
+    color: v.$font-color;
     opacity: 0.8;
     border: 2px solid white;
     border-radius: 6px;
@@ -335,7 +335,7 @@ body {
   }
 
   .header {
-    color: #7e7e82;
+    color: v.$font-color;
     font-weight: 300;
     width: 100%;
     height: 56px;
@@ -430,7 +430,7 @@ body {
       gap: 32px;
     }
     .header {
-      color: #7e7e82;
+      color: v.$font-color;
       font-weight: 300;
       width: 100%;
       height: 56px;
@@ -446,7 +446,7 @@ body {
 }
 .slider__item2 {
   .item__button2 {
-    font-family: 'ttlakes';
+    font-family: v.$font-family;
     font-weight: 500;
     width: 240px;
     height: 160px;
@@ -492,7 +492,7 @@ body {
     border-top: 1px solid #d9fff5;
     padding: 16px 0 16px 24px;
     font-size: 16px;
-    color: #7e7e82;
+    color: v.$font-color;
     align-content: center;
     width: 100%;
     height: 57px;
@@ -506,17 +506,17 @@ body {
 
     .header-1 {
       font-weight: 500;
-      color: #7e7e82;
+      color: v.$font-color;
       width: 50%;
     }
     .header-2 {
       font-weight: 500;
-      color: #7e7e82;
+      color: v.$font-color;
       flex-grow: 0.4;
     }
     .header-3 {
       font-weight: 500;
-      color: #7e7e82;
+      color: v.$font-color;
     }
   }
   .prices-list {
@@ -604,7 +604,7 @@ body {
     font-weight: 500;
     opacity: 72.18%;
     font-size: 14px;
-    color: #7e7e82;
+    color: v.$font-color;
   }
 
   &__politics {
@@ -613,7 +613,7 @@ body {
     font-weight: 500;
     opacity: 72.18%;
     font-size: 14px;
-    color: #7e7e82;
+    color: v.$font-color;
   }
   &__public {
     text-align: end;
@@ -621,6 +621,6 @@ body {
     font-weight: 500;
     opacity: 72.18%;
     font-size: 14px;
-    color: #7e7e82;
+    color: v.$font-color;
   }
 }

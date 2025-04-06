@@ -16,7 +16,7 @@ body {
   height: 40px;
 }
 .button:active {
-  background-color: rgba(0, 255, 213, 0.2549019608);
+  background-color: rgba(177, 191, 189, 0.1333333333);
 }
 
 .aside {
@@ -75,7 +75,7 @@ body {
   display: flex;
   align-items: center;
   padding-left: 24px;
-  color: #1b1c21;
+  color: #7e7e82;
   transition: color 0.3s ease;
 }
 .list__item:hover button {
@@ -95,12 +95,12 @@ body {
 }
 .aside__footer .mail {
   font-weight: 500;
-  color: #1b1c21;
+  color: #7e7e82;
   margin-bottom: 12px;
 }
 .aside__footer .number {
   font-weight: 700;
-  color: #1b1c21;
+  color: #7e7e82;
 }
 
 .language {
@@ -167,7 +167,7 @@ body {
 }
 .repair:active,
 .checkstatus:active {
-  background-color: rgba(0, 255, 213, 0.2549019608);
+  background-color: rgba(177, 191, 189, 0.1333333333);
 }
 
 .checkstatus {
@@ -411,7 +411,7 @@ body {
   background-color: #fff;
 }
 .slider__item2 .item__button2:active {
-  background-color: rgba(0, 255, 213, 0.2549019608);
+  background-color: rgba(177, 191, 189, 0.1333333333);
 }
 
 .tech-go {
@@ -476,7 +476,7 @@ body {
   background-color: #fff;
 }
 .list-item-button:active {
-  background-color: rgba(0, 255, 213, 0.2549019608);
+  background-color: rgba(177, 191, 189, 0.1333333333);
 }
 
 .prices-list-item {
@@ -523,7 +523,7 @@ body {
   gap: 10px;
 }
 .prices__footer-button:active {
-  background-color: rgba(0, 255, 213, 0.2549019608);
+  background-color: rgba(177, 191, 189, 0.1333333333);
 }
 
 .footer {
