@@ -1,4 +1,4 @@
-// import '../scss/styles-easy.scss'
+import '../scss/styles-easy.scss'
 
 // console.log('It works!')
 
