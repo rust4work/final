@@ -72,7 +72,7 @@
           <button class="icon button call">
             <img src="img/call.svg" alt="icon" />
           </button>
-          <button class="icon button message">
+          <button class="icon button message openModalMessage" id="openModal">
             <img src="img/message.svg" alt="icon" />
           </button>
           <button class="icon button profile">
@@ -99,6 +99,51 @@
         </div>
       </div>
     </aside>
+
+    <div class="modal">
+      <div class="modal-blur"></div>
+      <div class="modal-feedback">
+        <div class="modal-feedback__wrapper">
+          <button class="button-close" id="closeModal"></button>
+          <div class="feedback__main">
+            <div class="feedback__main-header">
+              <div class="divider2"></div>Обратная связь
+            </div>
+            <form class="feedback__form"
+              ><div class="feedback__input">
+                <input
+                  class="feedback__input-item"
+                  placeholder="Имя"
+                  type="text"
+                />
+                <input
+                  class="feedback__input-item"
+                  placeholder="Телефон"
+                  type="tel"
+                />
+                <input
+                  class="feedback__input-item"
+                  placeholder="Электронная почта"
+                  type="email"
+                />
+                <textarea
+                  class="feedback__input-item message"
+                  placeholder="Сообщение"
+                  type="text"
+                ></textarea></div
+            ></form>
+            <div class="feedback__footer">
+              Нажимая “отправить”, вы даете согласие на
+              <a href=""> обработку персональных данных</a> и соглашаетесь с
+              нашей
+              <br />
+              <a href=""> политикой конфиденциальности</a>
+            </div>
+            <button class="feedback__submit"></button>
+          </div>
+        </div> </div
+    ></div>
+
     <main class="main">
       <div class="main__header">
         <div class="left-side">

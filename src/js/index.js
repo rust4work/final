@@ -177,3 +177,57 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   })
 })
+
+//modal
+
+const buttonElem = document.querySelector('.openModalMessage')
+const modalElem = document.querySelector('.modal')
+const closeModalBtn = document.getElementById('closeModal')
+const modalContent = document.querySelector('.modal-feedback')
+const modalBlur = document.querySelector('.modal-blur')
+
+// Сброс стилей при загрузке
+modalElem.style.cssText = `
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+`
+modalBlur.style.cssText = `
+  opacity: 0;
+  visibility: hidden;
+  `
+const openModal = () => {
+  modalElem.style.display = 'flex'
+  requestAnimationFrame(() => {
+    modalBlur.style.opacity = '1'
+    modalBlur.style.visibility = 'visible'
+    modalElem.style.visibility = 'visible'
+    modalElem.style.opacity = '1'
+  })
+}
+
+const closeModal = () => {
+  modalElem.style.opacity = '0'
+  modalElem.style.visibility = 'hidden'
+  modalElem.addEventListener(
+    'transitionend',
+    () => {
+      modalElem.style.display = 'none'
+    },
+    { once: true }
+  )
+}
+
+// Открытие по кнопке
+buttonElem.addEventListener('click', openModal)
+
+// Закрытие по ✖️
+closeModalBtn.addEventListener('click', closeModal)
+
+// Закрытие по фону (не по модальному контенту)
+modalElem.addEventListener('click', (e) => {
+  if (!modalContent.contains(e.target)) {
+    closeModal()
+  }
+})
