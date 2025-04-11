@@ -8,11 +8,11 @@ body {
   display: flex;
   font-family: v.$font-family;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 }
 
 *button {
-  background-color: #fff;
+  background-color: transparent !important;
   border: none;
   padding: 0;
   width: fit-content;
@@ -26,13 +26,16 @@ body {
 .aside {
   width: 306px;
   height: 100vh;
-  overflow-y: auto;
   background-color: #fff;
   position: fixed;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between !important;
   z-index: 1000;
+
+  &::-webkit-scrollbar {
+    display: none; /* для WebKit-браузеров */
+  }
 
   &__header {
     display: flex;
@@ -48,11 +51,19 @@ body {
     list-style: none;
     padding-left: 0;
     padding-top: 37px;
-    margin-bottom: 0;
+    margin-bottom: 20px;
     flex-grow: 1;
-    overflow-y: auto;
   }
 }
+
+.button-close-2 {
+  display: none;
+  background-image: url(../img/close.svg);
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
 .button-list {
   background-color: #fff;
   width: fit-content;
@@ -103,6 +114,8 @@ body {
 
 .aside__footer {
   margin-left: 19px;
+  margin-bottom: 20px;
+
   .contact {
     display: flex;
     gap: 16px;
@@ -185,9 +198,10 @@ body {
 }
 
 .feedback__main {
+  box-shadow: -16px 0px 52px 0px #0e185033;
   background-color: rgb(255, 255, 255);
   height: 100vh;
-  box-shadow: -2px 0px 4px 0px rgba(0, 0, 0, 0.1);
+
   &-header {
     display: flex;
     font-weight: 700;
@@ -312,7 +326,7 @@ body {
 .main {
   &__scrollbar {
     width: auto;
-    max-width: 1140px;
+    max-width: 1100px;
     height: 40px;
     margin: 0 20px;
     margin-top: 8px;
@@ -424,6 +438,7 @@ body {
     display: flex;
     align-items: center;
     border-top: 1px solid #d9fff5;
+    background: linear-gradient(to right, #f8f8f8, #fff);
   }
 
   .slider {
@@ -510,6 +525,7 @@ body {
       gap: 32px;
     }
     .header {
+      background: linear-gradient(to right, #f8f8f8, #fff);
       color: v.$font-color;
       font-weight: 300;
       width: 100%;
@@ -570,11 +586,13 @@ body {
   &-header {
     text-transform: uppercase;
     border-top: 1px solid #d9fff5;
-    padding: 16px 0 16px 24px;
+    padding: 0 0 16px 24px;
     font-size: 16px;
     color: v.$font-color;
     align-content: center;
-    width: 100%;
+    width: 90%;
+    background: linear-gradient(to right, #f8f8f8, #fff);
+
     height: 57px;
   }
 }
@@ -605,6 +623,7 @@ body {
     margin-bottom: 32px;
 
     .prices-list-item {
+      width: 95%;
       display: flex;
       align-items: center;
     }
@@ -706,11 +725,19 @@ body {
   }
 }
 
+.overlay {
+  display: none;
+}
+
 // media 768-1440
 
 @media (max-width: 1440px) and (min-width: 768px) {
   .aside {
     display: none;
+
+    &.actived {
+      overflow-y: auto;
+    }
   }
 
   .main {
@@ -720,6 +747,7 @@ body {
     }
   }
   .main__header-768 {
+    box-sizing: border-box;
     background-color: #fff;
     display: flex;
     align-items: center;
@@ -763,7 +791,13 @@ body {
     grid-column: 1/2;
   }
 
+  .main.nocsroll {
+    overflow: hidden;
+    height: 100vh;
+  }
+
   .slider {
+    overflow: hidden;
     grid-template-columns: repeat(3, 1fr) !important;
     .eshe768 {
       display: none;
@@ -771,6 +805,7 @@ body {
   }
 
   .slider-techs {
+    overflow: hidden;
     grid-template-columns: repeat(3, 1fr) !important;
     padding-left: 24px;
   }
@@ -786,6 +821,7 @@ body {
   }
 
   .footer {
+    box-sizing: border-box;
     margin-left: 0;
 
     &:first-of-type {
@@ -799,12 +835,13 @@ body {
   .aside {
     display: flex;
     box-shadow: 16px 0px 52px 0px #0e185033;
-
+    overflow-y: auto;
     position: fixed;
     top: 0;
     left: -306px;
     width: 306px;
     height: 100vh;
+    max-height: 100vh;
     color: #fff;
     transition: left 0.3s ease;
     z-index: 1000;
@@ -812,6 +849,28 @@ body {
   .aside.actived {
     left: 0;
   }
+
+  .button-close-2 {
+    display: block;
+    margin-right: 15px;
+  }
+
+  .button-search {
+    margin-left: auto;
+  }
+
+  .aside__header {
+    justify-content: start;
+  }
+
+  .overlay {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    color: transparent;
+    z-index: 500;
+  }
+
   #burger {
     position: relative;
 
@@ -828,5 +887,30 @@ body {
   }
   .main.blurred {
     filter: blur(4px);
+    pointer-events: none;
+  }
+
+  .footer {
+    width: 96%;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7); // или другой цвет
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    pointer-events: none; // чтобы не блокировать ничего в скрытом состоянии
+
+    &.visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+    }
   }
 }

@@ -10,10 +10,12 @@
 
   <body>
     <aside class="aside">
-      <div class="aside__header"
-        ><img class="img__logo" src="img/logo-cps.svg" alt="logo" />
+      <div class="aside__header">
+        <button class="button-close-2" id="button-close-2"></button>
 
-        <button class="button">
+        <img class="img__logo" src="img/logo-cps.svg" alt="logo" />
+
+        <button class="button-search">
           <img class="icon search" src="img/search.svg" alt="lupa" /></button
       ></div>
       <ul class="aside__list">
@@ -100,6 +102,8 @@
       </div>
     </aside>
 
+    <div class="overlay"></div>
+
     <div class="modal">
       <div class="modal-blur"></div>
       <div class="modal-feedback">
@@ -181,7 +185,7 @@
             </button>
           </div>
           <div class="header__item16">
-            <button class="header-button">
+            <button class="header-button openModalMessage">
               <img src="img/chat.svg" alt="item" />
             </button>
           </div>
@@ -529,6 +533,7 @@
         >
       </footer>
     </main>
+    <div class="overlay"></div>
 
     <!-- <script type="module" src="../src/js/index.js"></script> -->
   </body>

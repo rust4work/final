@@ -154,28 +154,43 @@ document.addEventListener('DOMContentLoaded', function () {
   const burger = document.getElementById('burger')
   const aside = document.querySelector('.aside')
   const main = document.querySelector('.main')
+  const closeBtn = document.querySelector('.button-close-2')
 
   if (!burger || !aside || !main) {
     console.error('Бургер, aside или main не найдены')
     return
   }
 
-  // Переключение при клике на бургер
-  burger.addEventListener('click', () => {
+  // Открытие / закрытие aside по клику на бургер
+  burger.addEventListener('click', (e) => {
+    e.stopPropagation()
     aside.classList.toggle('actived')
     main.classList.toggle('blurred')
   })
 
-  // Закрытие при клике вне aside
+  // Закрытие aside при клике вне его
   document.addEventListener('click', (event) => {
-    const isClickInside =
-      aside.contains(event.target) || burger.contains(event.target)
+    const target = event.target
+    const clickedInsideAside = aside.contains(target)
+    const clickedBurger = burger.contains(target)
 
-    if (!isClickInside && aside.classList.contains('actived')) {
+    if (
+      !clickedInsideAside &&
+      !clickedBurger &&
+      aside.classList.contains('actived')
+    ) {
       aside.classList.remove('actived')
       main.classList.remove('blurred')
     }
   })
+
+  // Закрытие aside при клике на кнопку закрытия
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      aside.classList.remove('actived')
+      main.classList.remove('blurred')
+    })
+  }
 })
 
 //modal
