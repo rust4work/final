@@ -30,6 +30,22 @@ document.addEventListener('DOMContentLoaded', function () {
     })
   }
 
+  const showItemsOnSmallScreen = (selectors) => {
+    const updateDisplay = () => {
+      if (window.innerWidth < 768) {
+        selectors.forEach((selector) => {
+          const items = document.querySelectorAll(selector)
+          items.forEach((item) => {
+            item.style.display = 'flex'
+          })
+        })
+      }
+    }
+
+    window.addEventListener('load', updateDisplay)
+    window.addEventListener('resize', updateDisplay)
+  }
+
   // Бренды
   toggleItems('hideBtn', '.slider__item.eshe', 'button__text', 'icon__less')
   toggleItems('hideBtn', '.slider__item.eshe768', 'button__text', 'icon__less')
@@ -47,6 +63,14 @@ document.addEventListener('DOMContentLoaded', function () {
     'button__text2',
     'icon__less2'
   )
+
+  // Автопоказ при узком экране
+  showItemsOnSmallScreen([
+    '.slider__item.eshe',
+    '.slider__item.eshe768',
+    '.techs .slider__item2.eshe768',
+    '.techs .slider__item2.eshe'
+  ])
 })
 
 // ===================== Бургер-меню ==========================
@@ -146,7 +170,7 @@ modalElem?.addEventListener('click', (e) => {
 // ===================== Модалка "call" ==========================
 // ===================== Модалка "call" ==========================
 const openBtn2 = document.querySelector('.icon.button.call')
-const closeBtn2 = document.querySelector('.closeModal')
+const closeBtn2 = document.querySelector('.closeModal2')
 const modalCall = document.querySelector('.modal__call')
 const modalBlur2 = document.querySelector('.modal__blur')
 const modalCallContent = document.querySelector('.modal__call-content')
@@ -180,3 +204,22 @@ document.addEventListener('keydown', (e) => {
     closeModal2()
   }
 })
+
+//less 768 swiper
+
+const targetWidth = 767
+
+// Vybirayem vse divy, k kotorym nado dobavit klass
+const targetDivs = document.querySelectorAll('.slider') // zamenite '.my-div' na svoy selektor
+// Funktsiya dlya proverki shiriny i dobavleniya klassov
+function checkScreenWidth() {
+  if (window.innerWidth <= targetWidth) {
+    targetDivs.forEach((div) => div.classList.add('active-class'))
+  } else {
+    targetDivs.forEach((div) => div.classList.remove('active-class'))
+  }
+}
+
+// Zapusk pri zagruzke i pri izmenenii razmera okna
+window.addEventListener('load', checkScreenWidth)
+window.addEventListener('resize', checkScreenWidth)
