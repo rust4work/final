@@ -206,20 +206,84 @@ document.addEventListener('keydown', (e) => {
 })
 
 //less 768 swiper
+import Swiper from 'swiper'
+import { Navigation, Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
 const targetWidth = 767
 
-// Vybirayem vse divy, k kotorym nado dobavit klass
-const targetDivs = document.querySelectorAll('.slider') // zamenite '.my-div' na svoy selektor
-// Funktsiya dlya proverki shiriny i dobavleniya klassov
-function checkScreenWidth() {
-  if (window.innerWidth <= targetWidth) {
-    targetDivs.forEach((div) => div.classList.add('active-class'))
-  } else {
-    targetDivs.forEach((div) => div.classList.remove('active-class'))
+const companiesSlider = document.querySelector('.companies')
+const companiesWrapper = companiesSlider?.querySelector('.slider')
+const companiesItems = companiesSlider?.querySelectorAll('.slider__item')
+
+const techsSlider = document.querySelector('.techs__wrapper')
+const techsWrapper = techsSlider?.querySelector('.slider-techs')
+const techsItems = techsSlider?.querySelectorAll('.slider__item2')
+
+let companiesSwiper = null
+let techsSwiper = null
+
+function initSwipers() {
+  if (!companiesSwiper) {
+    companiesSwiper = new Swiper('.companies.swiper', {
+      modules: [Navigation, Pagination],
+      slidesPerView: 1,
+      spaceBetween: 0,
+      pagination: {
+        el: '.companies .swiper-pagination',
+        clickable: true
+      }
+    })
+  }
+
+  if (!techsSwiper) {
+    techsSwiper = new Swiper('.techs__wrapper.swiper', {
+      modules: [Navigation, Pagination],
+      slidesPerView: 1,
+      spaceBetween: 0,
+      pagination: {
+        el: '.techs__wrapper .swiper-pagination',
+        clickable: true
+      }
+    })
   }
 }
 
-// Zapusk pri zagruzke i pri izmenenii razmera okna
+function destroySwipers() {
+  if (companiesSwiper) {
+    companiesSwiper.destroy(true, true)
+    companiesSwiper = null
+  }
+
+  if (techsSwiper) {
+    techsSwiper.destroy(true, true)
+    techsSwiper = null
+  }
+}
+
+function toggleSwiperClasses(add) {
+  const method = add ? 'add' : 'remove'
+
+  companiesSlider?.classList[method]('swiper')
+  companiesWrapper?.classList[method]('swiper-wrapper')
+  companiesItems?.forEach((item) => item.classList[method]('swiper-slide'))
+
+  techsSlider?.classList[method]('swiper')
+  techsWrapper?.classList[method]('swiper-wrapper')
+  techsItems?.forEach((item) => item.classList[method]('swiper-slide'))
+}
+
+function checkScreenWidth() {
+  if (window.innerWidth <= targetWidth) {
+    toggleSwiperClasses(true)
+    initSwipers()
+  } else {
+    destroySwipers()
+    toggleSwiperClasses(false)
+  }
+}
+
 window.addEventListener('load', checkScreenWidth)
 window.addEventListener('resize', checkScreenWidth)

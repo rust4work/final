@@ -529,6 +529,9 @@ body {
 
 //companies
 
+.swiper-pagination {
+  display: none;
+}
 .companies {
   margin-top: 51px;
   button {
@@ -1228,5 +1231,27 @@ body {
   }
   .call__main {
     width: 100%;
+  }
+
+  .swiper-pagination {
+    display: block;
+    bottom: -16px;
+  }
+
+  .swiper-slide {
+    width: 240px !important;
+  }
+
+  .slider {
+    max-height: 80px;
+  }
+
+  .companies {
+    height: 180px;
+  }
+
+  .techs__wrapper {
+    margin-top: 25px;
+    min-height: 280px;
   }
 }
