@@ -225,7 +225,7 @@ const techsItems = techsSlider?.querySelectorAll('.slider__item2')
 
 const pricesSliderElems = document.querySelectorAll('.prices__wrapper-list')
 const pricesWrapperElems = document.querySelectorAll('.prices-list')
-const pricesItems = document.querySelectorAll('li')
+const pricesItems = document.querySelectorAll('#prcitm')
 
 let companiesSwiper = null
 let techsSwiper = null
