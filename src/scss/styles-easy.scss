@@ -1254,4 +1254,20 @@ body {
     margin-top: 25px;
     min-height: 280px;
   }
+
+  .swiper-slide {
+    width: fit-content !important;
+  }
+
+  .prices__wrapper-list {
+    height: 320px;
+  }
+
+  .swiper-wrapper {
+    max-width: fit-content !important;
+  }
+
+  #last-swiper {
+    bottom: 10px;
+  }
 }
