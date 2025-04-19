@@ -223,13 +223,8 @@ const techsSlider = document.querySelector('.techs__wrapper')
 const techsWrapper = techsSlider?.querySelector('.slider-techs')
 const techsItems = techsSlider?.querySelectorAll('.slider__item2')
 
-const pricesSliderElems = document.querySelectorAll('.prices__wrapper-list')
-const pricesWrapperElems = document.querySelectorAll('.prices-list')
-const pricesItems = document.querySelectorAll('#prcitm')
-
 let companiesSwiper = null
 let techsSwiper = null
-let pricesSwiper = null
 
 function initSwipers() {
   if (!companiesSwiper) {
@@ -255,18 +250,6 @@ function initSwipers() {
       }
     })
   }
-
-  if (!pricesSwiper) {
-    pricesSwiper = new Swiper('.prices__wrapper-list.swiper', {
-      modules: [Navigation, Pagination],
-      slidesPerView: 1.8,
-      spaceBetween: 0,
-      pagination: {
-        el: '.prices-list .swiper-pagination',
-        clickable: true
-      }
-    })
-  }
 }
 
 function destroySwipers() {
@@ -278,11 +261,6 @@ function destroySwipers() {
   if (techsSwiper) {
     techsSwiper.destroy(true, true)
     techsSwiper = null
-  }
-
-  if (pricesSwiper) {
-    pricesSwiper.destroy(true, true)
-    pricesSwiper = null
   }
 }
 
@@ -296,10 +274,6 @@ function toggleSwiperClasses(add) {
   techsSlider?.classList[method]('swiper')
   techsWrapper?.classList[method]('swiper-wrapper')
   techsItems?.forEach((item) => item.classList[method]('swiper-slide'))
-
-  pricesSliderElems?.forEach((el) => el.classList[method]('swiper'))
-  pricesWrapperElems?.forEach((el) => el.classList[method]('swiper-wrapper'))
-  pricesItems?.forEach((item) => item.classList[method]('swiper-slide'))
 }
 
 function checkScreenWidth() {
@@ -314,3 +288,14 @@ function checkScreenWidth() {
 
 window.addEventListener('load', checkScreenWidth)
 window.addEventListener('resize', checkScreenWidth)
+
+var swiper = new Swiper('.mySwiper', {
+  modules: [Navigation, Pagination],
+  slidesPerView: 2,
+  slidesPerGroup: 1,
+  spaceBetween: 0,
+  pagination: {
+    el: '.prices768__wrapper .swiper-pagination',
+    clickable: true
+  }
+})
