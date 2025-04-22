@@ -1335,3 +1335,10 @@ button {
     font-weight: 400;
   }
 }
+
+@media (min-width: 768px) {
+  .closeModal,
+  .closeModal2 {
+    margin: 20px;
+  }
+}
