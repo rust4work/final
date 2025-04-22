@@ -2,75 +2,63 @@ import '../scss/styles-easy.scss'
 
 // ===================== Показать ещё ==========================
 document.addEventListener('DOMContentLoaded', function () {
-  const toggleItems = (btnId, itemSelector, textId, iconId) => {
+  const toggleItems = (btnId, selectors, textId, iconId) => {
     const button = document.getElementById(btnId)
-    const items = document.querySelectorAll(itemSelector)
     const buttonText = document.getElementById(textId)
     const icon = document.getElementById(iconId)
+    const items = selectors.flatMap((selector) =>
+      Array.from(document.querySelectorAll(selector))
+    )
 
-    if (!button || items.length === 0) return
+    if (!button || items.length === 0) return () => {}
 
+    // Принудительно скрываем extra items при загрузке
     items.forEach((item) => {
-      if (item.style.display === '') {
-        item.style.display = 'none'
-      }
+      item.style.display = 'none'
     })
 
-    button.addEventListener('click', () => {
-      const allHidden = Array.from(items).every(
-        (item) => item.style.display === 'none'
-      )
+    const areAllHidden = () =>
+      items.every((item) => getComputedStyle(item).display === 'none')
 
-      items.forEach((item) => {
-        item.style.display = allHidden ? 'flex' : 'none'
-      })
-
-      buttonText.textContent = allHidden ? 'Скрыть' : 'Показать все'
-      icon.src = allHidden ? 'img/expand-.svg' : 'img/expand+.svg'
-    })
-  }
-
-  const showItemsOnSmallScreen = (selectors) => {
-    const updateDisplay = () => {
-      if (window.innerWidth < 768) {
-        selectors.forEach((selector) => {
-          const items = document.querySelectorAll(selector)
-          items.forEach((item) => {
-            item.style.display = 'flex'
-          })
-        })
-      }
+    const updateButtonState = () => {
+      const hidden = areAllHidden()
+      buttonText.textContent = hidden ? 'Показать все' : 'Скрыть'
+      icon.src = hidden ? 'img/expand+.svg' : 'img/expand-.svg'
     }
 
-    window.addEventListener('load', updateDisplay)
-    window.addEventListener('resize', updateDisplay)
+    const toggle = () => {
+      const shouldShow = areAllHidden()
+      items.forEach((item) => {
+        item.style.display = shouldShow ? 'flex' : 'none'
+      })
+      updateButtonState()
+    }
+
+    // Обновляем состояние при ресайзе (фикс бага!)
+    window.addEventListener('resize', updateButtonState)
+
+    button.addEventListener('click', toggle)
+
+    updateButtonState()
+
+    return updateButtonState
   }
 
   // Бренды
-  toggleItems('hideBtn', '.slider__item.eshe', 'button__text', 'icon__less')
-  toggleItems('hideBtn', '.slider__item.eshe768', 'button__text', 'icon__less')
+  toggleItems(
+    'hideBtn',
+    ['.slider__item.eshe', '.slider__item.eshe768'],
+    'button__text',
+    'icon__less'
+  )
 
   // Техника
   toggleItems(
     'hideBtn2',
-    '.techs .slider__item2.eshe768',
+    ['.techs .slider__item2.eshe768', '.techs .slider__item2.eshe'],
     'button__text2',
     'icon__less2'
   )
-  toggleItems(
-    'hideBtn2',
-    '.techs .slider__item2.eshe',
-    'button__text2',
-    'icon__less2'
-  )
-
-  // Автопоказ при узком экране
-  showItemsOnSmallScreen([
-    '.slider__item.eshe',
-    '.slider__item.eshe768',
-    '.techs .slider__item2.eshe768',
-    '.techs .slider__item2.eshe'
-  ])
 })
 
 // ===================== Бургер-меню ==========================
@@ -230,8 +218,8 @@ function initSwipers() {
   if (!companiesSwiper) {
     companiesSwiper = new Swiper('.companies.swiper', {
       modules: [Navigation, Pagination],
-      slidesPerView: 1,
-      spaceBetween: 0,
+      slidesPerView: 2.5,
+      spaceBetween: 32,
       pagination: {
         el: '.companies .swiper-pagination',
         clickable: true
@@ -242,8 +230,8 @@ function initSwipers() {
   if (!techsSwiper) {
     techsSwiper = new Swiper('.techs__wrapper.swiper', {
       modules: [Navigation, Pagination],
-      slidesPerView: 1,
-      spaceBetween: 0,
+      slidesPerView: 2,
+      spaceBetween: 32,
       pagination: {
         el: '.techs__wrapper .swiper-pagination',
         clickable: true
@@ -292,8 +280,8 @@ window.addEventListener('resize', checkScreenWidth)
 var swiper = new Swiper('.mySwiper', {
   modules: [Navigation, Pagination],
   slidesPerView: 2,
-  slidesPerGroup: 1,
-  spaceBetween: 0,
+
+  spaceBetween: 16,
   pagination: {
     el: '.prices768__wrapper .swiper-pagination',
     clickable: true

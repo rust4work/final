@@ -259,16 +259,13 @@ button {
 }
 
 .button-close {
-  margin: 32px 32px 0 0;
   padding: 20px;
   background-image: url(../img/close.svg);
+  background-repeat: no-repeat;
+  background-position: center;
   width: 40px;
   height: 40px;
   cursor: pointer;
-}
-
-.closeModal2 {
-  margin-right: 16px;
 }
 .modal__call {
   position: fixed;
@@ -1051,6 +1048,11 @@ button {
     justify-content: start;
   }
 
+  .slider-techs,
+  .slider {
+    gap: 0 !important;
+  }
+
   .main {
     transition: filter 0.3 ease;
   }
@@ -1199,10 +1201,6 @@ button {
     box-shadow: none;
   }
 
-  .closeModal2 {
-    margin-left: 16px !important;
-  }
-
   .call__wrapper {
     display: block !important;
   }
@@ -1277,7 +1275,7 @@ button {
     height: 320px;
   }
   .prices768 {
-    display: block;
+    display: flex;
 
     &__item {
       width: 260px !important;
@@ -1307,7 +1305,6 @@ button {
 
   .prices__main768 {
     padding: 16px 8px;
-    column-gap: 16px;
   }
 
   .price__name,
